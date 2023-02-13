@@ -19,7 +19,7 @@ def check_person(registrant: dict) -> None:
     if 'No people found' in response.text:
         print(f'✅ INFO: No users found for "{name}" ({country}).')
     else:
-        print(f'❌ WARN: User(s) found for "{name}" ({country}).')
+        print(f'⚠️ WARN: User(s) found for "{name}" ({country}).')
         print('Opening search results in browser...')
         webbrowser.open(search_url)
 
@@ -36,7 +36,7 @@ def print_help_and_exit():
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print('ERROR: Missing CSV file parameter.')
+        print('❌ ERROR: Missing CSV file parameter.')
         print_help_and_exit()
 
     if sys.argv[1] in ['help', '--help', 'h', '-h']:
