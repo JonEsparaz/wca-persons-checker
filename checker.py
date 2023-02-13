@@ -23,17 +23,9 @@ def check_person(registrant: dict) -> None:
         print('Opening search results in browser...')
         webbrowser.open(search_url)
 
-def get_registrants_with_no_wca_id() -> List[dict]:
+def get_registrants_with_no_wca_id(filename: str) -> List[dict]:
     '''Returns a list of registrants with no WCA ID from a CSV file.'''
-
-    if len(sys.argv) < 2:
-        print('ERROR: Missing CSV file parameter.')
-        print_help_and_exit()
-
-    if sys.argv[1] in ['help', '--help', 'h', '-h']:
-        print_help_and_exit()
-    
-    with open(sys.argv[1], 'r') as csv_file:
+    with open(filename, 'r') as csv_file:
         registrations = list(csv.DictReader(csv_file))
         not_has_wca_id = lambda r: not r['WCA ID']
         return list(filter(not_has_wca_id, registrations))
@@ -43,5 +35,12 @@ def print_help_and_exit():
     sys.exit()
 
 if __name__ == '__main__':
-    for person in get_registrants_with_no_wca_id():
+    if len(sys.argv) < 2:
+        print('ERROR: Missing CSV file parameter.')
+        print_help_and_exit()
+
+    if sys.argv[1] in ['help', '--help', 'h', '-h']:
+        print_help_and_exit()
+
+    for person in get_registrants_with_no_wca_id(sys.argv[1]):
         check_person(person)
