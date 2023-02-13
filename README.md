@@ -11,5 +11,5 @@ Note: Since this script leverages the WCA website's omnisearch, there will be so
 `example.csv` contains some (mostly fake) data for demonstration purposes. Usage:
 
 ```sh
-python checker.py example.csv 
+python checker.py example.csv
 ```
