@@ -1,0 +1,4 @@
+Status,Name,Country,WCA ID,Birth Date,Gender,333,222,444,555,333bf,Email,Guests,IP
+a,Jonathan Esparaz,Canada,2013ESPA01,0000-00-00,m,1,1,1,1,1,null@example.org,0,""
+a,Andy Smith,Canada,,0000-00-00,m,1,0,0,0,0,null@example.org,0,""
+a,A Unique Name,Canada,,0000-00-00,m,1,0,0,0,0,null@example.org,0,""
