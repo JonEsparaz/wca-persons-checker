@@ -13,15 +13,17 @@ def check_person(registrant: dict) -> None:
     name = registrant.get('Name')
     country = registrant.get('Country')
     name_url_encoded = urllib.parse.quote(name)
-    search_url = f'https://www.worldcubeassociation.org/search?q={name_url_encoded}'
-    response = requests.get(search_url)
+    search_api_url = f'https://www.worldcubeassociation.org/api/v0/search/users?q={name_url_encoded}'
+    response = requests.get(search_api_url)
+    results = response.json().get('result', [])
 
-    if 'No people found' in response.text:
+    if len(results) == 0:
         print(f'✅ INFO: No users found for "{name}" ({country}).')
     else:
         print(f'⚠️ WARN: User(s) found for "{name}" ({country}).')
         print('Opening search results in browser...')
-        webbrowser.open(search_url)
+        web_search_url = f'https://www.worldcubeassociation.org/search?q={name_url_encoded}'
+        webbrowser.open(web_search_url)
 
 def get_registrants_with_no_wca_id(filename: str) -> List[dict]:
     '''Returns a list of registrants with no WCA ID from a CSV file.'''
