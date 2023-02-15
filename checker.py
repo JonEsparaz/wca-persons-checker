@@ -22,7 +22,7 @@ def check_person(registrant: dict) -> None:
     else:
         print(f'⚠️ WARN: User(s) found for "{name}" ({country}).')
         print('Opening search results in browser...')
-        web_search_url = f'https://www.worldcubeassociation.org/search?q={name_url_encoded}'
+        web_search_url = f'https://www.worldcubeassociation.org/persons?search={name_url_encoded}'
         webbrowser.open(web_search_url)
 
 def get_registrants_with_no_wca_id(filename: str) -> List[dict]:
